@@ -1,0 +1,49 @@
+float f1(x)
+float x;
+{
+	float f;
+	f=1+x*x;
+	return (f);
+}
+
+float f2(x)
+float x;
+{
+	float f;
+	f=1+x+x*x+x*x*x;
+	return (f);
+}
+
+float f3(x)
+float x;
+{
+	float f;
+	f=x/(1+x*x);
+	return (f);
+	
+}
+
+float integral (fun,a,b)
+float (*fun)(),a,b;
+{
+	float s,h,y;
+	int n,i;
+	s=((*fun)(a)+(*fun)(b))/2.0;
+	n=100;
+	h=(b-a)/n;
+	for (i=1;i<n;i++)
+	  s=s+(*fun)(a+i*h);
+	y=s*h;
+	return (y);
+	
+	
+}
+main()
+{
+	float f1(),f2(),f3(),integral();
+	float a,b,y1,y2,y3;
+	y1=integral(f1,0.0,1.0);
+	y2=integral(f2,0.0,2.0);
+	y3=integral(f3,0.0,3.5);
+	printf("y1=%6.2f\ny2=%6.2f\ny3=%6.2f\n",y1,y2,y3);
+}
